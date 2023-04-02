@@ -26,3 +26,6 @@ def singluten(request):
 def mostrar_entradas(request):
     return render(request, 'recetas/mostrarentradas.html')
 
+def login(request):
+    return render(request, 'recetas/login.html')
+

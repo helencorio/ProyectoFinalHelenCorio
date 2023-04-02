@@ -1,6 +1,6 @@
 
 from django.urls import path, include
-from recetas.views import inicio, entrada, platoprincipal, postre, singluten, vegano, mostrar_entradas
+from recetas.views import inicio, entrada, platoprincipal, postre, singluten, vegano, mostrar_entradas, login
 
 urlpatterns = [
     path('', inicio , name = "index"),
@@ -9,5 +9,7 @@ urlpatterns = [
     path('postres/', postre , name = "postre"),
     path('singluten/', singluten , name = "singluten"),
     path('veganos/', vegano , name = "vegano"),
-    path('mostrarentradas/', mostrar_entradas, name = "mostrar_entrada")
+    path('mostrarentradas/', mostrar_entradas, name = "mostrar_entrada"),
+    path('login/', login , name = "login"),
+
 ]
