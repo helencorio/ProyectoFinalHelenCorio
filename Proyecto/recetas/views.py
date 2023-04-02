@@ -5,3 +5,7 @@ from django.shortcuts import render
 
 def inicio(request):
     return render(request,'recetas/index.html')
+
+
+def base(request):
+    return render(request, 'recetas/entradas.html')
