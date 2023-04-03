@@ -9,7 +9,7 @@ urlpatterns = [
     path('postres/', postre , name = "postre"),
     path('singluten/', singluten , name = "singluten"),
     path('veganos/', vegano , name = "vegano"),
-    path('mostrarentradas/', mostrar_entradas, name = "mostrar_entrada"),
+    path('mostrarentradas/', mostrar_entradas, name = "entradas_list"),
     path('login/', login , name = "login"),
 
 ]
