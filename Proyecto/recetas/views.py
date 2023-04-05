@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from recetas.models import Entrada, Platoprincipal, Postre, Vegano, Singluten
 
 # Formularios -----------------------------------------------------------------------------
-from recetas.forms import EntradaFormulario,  PlatoprincipalFormulario, UserRegisterForm, PostreFormulario, VeganoFormulario,SinglutenFormulario
+from recetas.forms import EntradaFormulario,  PlatoprincipalFormulario, UserRegisterForm, UserEditForm, PostreFormulario, VeganoFormulario,SinglutenFormulario
 
 # INICIO Vistas basadas en Clases ----------------------------------------------------------
 from django.views.generic.base import TemplateView
@@ -51,6 +51,80 @@ def singluten(request):
 def mostrar_entradas(request):
     return render(request, 'recetas/entradas_list.html')
 
-def login(request):
-    return render(request, 'recetas/login.html')
 
+
+
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
+
+            user = authenticate(username=usuario,password = contra)
+
+            if user is not None:
+                login(request,user)
+
+                return render(request,"recetas/index.html",{"mensaje":f"Bienvenido {usuario}"})
+            else:
+                
+                return render(request,"recetas/index.html",{"mensaje":"Error,datos incorrectos"})
+
+        else:
+            
+                return render(request,"recetas/index.html",{"mensaje":"Error,formulario erroneo"})
+
+    form = AuthenticationForm()
+
+    return render(request,"recetas/login.html",{'form':form})
+
+
+
+def register(request):
+    if request.method == 'POST':
+        #form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
+        
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request,"recetas/index.html",{"mensaje":"Usuario Creado :)"})
+    else:
+        form = UserRegisterForm()
+        #form = UserCreationForm()
+    return render(request,"recetas/registro.html",{"form":form})
+
+
+
+def inicio(request):
+    return render(request,"recetas/index.html")
+
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+    if request.method == 'POST':
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            usuario.email = informacion['email']
+            usuario.password1= informacion['password1']
+            usuario.password2= informacion['password1']            
+            usuario.save()
+            
+
+            return render(request, "recetas/index.html")
+    else:
+
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+    return render(request, "recetas/editarPerfil.html",{"miFormulario": miFormulario, "usuario":usuario})
+
+
+
+#-----------------------------------------Avatar-------------------------------------------------------
+#@login_required
+#def inicio(request):
+    #avatares = Avatar.objects.filter(user=request.user.id)
+
+    #return render(request,"recetas/inicio.html", {"url":avatares[0].imagen.url})

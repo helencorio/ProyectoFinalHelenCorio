@@ -1,5 +1,7 @@
 
 from django.urls import path, include
+from recetas import views
+from django.contrib.auth.views import LogoutView
 from recetas.views import inicio, entrada, platoprincipal, postre, singluten, vegano, mostrar_entradas, login
 
 urlpatterns = [
@@ -10,6 +12,9 @@ urlpatterns = [
     path('singluten/', singluten , name = "singluten"),
     path('veganos/', vegano , name = "vegano"),
     path('mostrarentradas/', mostrar_entradas, name = "entradas_list"),
-    path('login/', login , name = "login"),
+    path('login/',views.login_request, name='login'),
+    path('register/',views.register, name='register'),
+    path('logout/',LogoutView.as_view(template_name='recetas/logout.html'), name='logout'),
+    path('editarPerfil/', views.editarPerfil, name="EditarPerfil")
 
 ]

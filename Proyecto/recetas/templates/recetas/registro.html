@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     
     <form action="" method="POST">
-        
-        {% csrf_token%}
-        {{form.as_p}}
 
-        <button type="submit"><a href="{% url 'index' %}"></a>Inicar Sesion</button>
-        <button type="submit"><a href="{% url 'register' %}">Registrarse</a></button>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Registrate</button>
+        <button type="submit"><a href="{% url 'login' %}">Atrás</a></button>
+        
     </form>
 
 </body>
