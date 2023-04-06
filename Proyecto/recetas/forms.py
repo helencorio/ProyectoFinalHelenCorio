@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class EntradaFormulario(forms.Form):   
-    nombre= forms.CharField(max_length=30)
+    nombre_receta= forms.CharField(max_length=30)
     duracion= forms.IntegerField()
     ingredientes= forms.CharField(max_length=60)
     procedimiento= forms.CharField(max_length=500)

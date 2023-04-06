@@ -1,0 +1,33 @@
+{% extends "recetas/base.html"%}
+
+{% load static %}
+
+{% block herencia %}
+
+
+
+    <h1>Agregar Mascota</h1>
+    
+    {% if  miFormularioEntrada.errors %}
+
+    <p style="color: red;"> Están mal los datos, revisar</p>
+
+    {% endif %}
+
+
+    <form action="" method="POST">{% csrf_token %}
+
+
+        <table>
+
+            {{  miFormularioEntrada.as_table }}
+
+
+        </table>
+
+
+        <input type="submit", value="Enviar">
+
+    </form>
+
+{% endblock %}

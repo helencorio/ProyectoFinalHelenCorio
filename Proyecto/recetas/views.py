@@ -125,6 +125,31 @@ def editarPerfil(request):
 #-----------------------------------------Avatar-------------------------------------------------------
 #@login_required
 #def inicio(request):
-    #avatares = Avatar.objects.filter(user=request.user.id)
+    avatares = Avatar.objects.filter(user=request.user.id)
 
-    #return render(request,"recetas/inicio.html", {"url":avatares[0].imagen.url})
+    #return render(request,"recetas/base.html", {"url":avatares[0].imagen.url})
+
+
+
+
+
+def formularioEntrada(request):
+    if request.method == 'POST':
+        miFormulario = EntradaFormulario(request.POST)
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+            
+            informacion = miFormulario.cleaned_data
+	
+            entrada= Entrada(
+            nombre_receta=informacion['nombre_receta'],
+            duracion=informacion['duracion'],
+            ingredientes=informacion['ingredientes'],
+            procedimiento=informacion['procedimiento'],)
+
+            entrada.save()
+
+            entradas = Entrada.objects.all()
+    
+            return render(request,"recetas/entradas.html",{"entradas":entradas})
