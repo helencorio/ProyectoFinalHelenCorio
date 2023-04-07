@@ -35,17 +35,19 @@ Entradas
         {% for e in entradas %}
             <li>{{e}}</li>
             <button>
-                <a href="{% url 'index' e.nombre_receta %}">Borrar| </a>
-                <a href="{% url 'index' e.nombre_receta %}">Actualizar</a>
+                <a href="{% url 'eliminarentrada' e.nombre_receta %}">Borrar| </a>
+                <a href="{% url 'editarentrada' e.nombre_receta %}">Actualizar</a>
             </button>
             <br>
         {% endfor %}
         </ul>
-        <p>
-            <a href="EntradaFormulario">Agregar</a>
-            
-        </p>
+        
     
 	{% endif %}
+
+    <p>
+        <a href="agregarentrada">Agregar</a>
+        
+    </p>
 
 {% endblock %}

@@ -122,10 +122,9 @@ def editarPerfil(request):
 
 
 
-#-----------------------------------------Avatar-------------------------------------------------------
 #@login_required
 #def inicio(request):
-    avatares = Avatar.objects.filter(user=request.user.id)
+    #avatares = Avatar.objects.filter(user=request.user.id)
 
     #return render(request,"recetas/base.html", {"url":avatares[0].imagen.url})
 
@@ -152,4 +151,37 @@ def formularioEntrada(request):
 
             entradas = Entrada.objects.all()
     
-            return render(request,"recetas/entradas.html",{"entradas":entradas})
+        return render(request,"recetas/entradas.html",{"entradas":entradas})
+        
+    else:
+        miFormulario = EntradaFormulario()
+    return render(request, "agregarentrada.html",{"miFormulario":miFormulario})
+
+
+def editarentrada(request,nombre_receta):
+
+    entrada = Entrada.objects.get(nombre_receta = nombre_receta )
+
+    if request.method == 'POST':
+        miFormularioEntrada = EntradaFormulario(request.POST)
+        print(miFormularioEntrada)
+
+        if miFormularioEntrada.is_valid:
+            
+            informacion = miFormularioEntrada.cleaned_data
+		
+            entrada.nombre_receta=informacion['nombre_receta']
+            entrada.duracion=informacion['duracion']
+            entrada.ingredientes=informacion['ingredientes']
+            entrada.procedimiento=informacion['procedimiento']
+		
+            entrada.save()
+            
+            return render(request, "recetas/index.html")
+
+    else:
+        miFormularioEntrada= EntradaFormulario(initial={'nombre_receta': entrada.nombre_receta, 'duracion': entrada.duracion , 
+            'ingredeintes': entrada.ingredientes, 'procedimiento':entrada.procedimiento}) 
+    
+    return render(request, "AppCoder/editarentrada.html", {"miFormularioEntrada": miFormularioEntrada, "entrada_nombre":entrada_nombre})
+        
