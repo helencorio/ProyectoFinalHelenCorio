@@ -1,15 +1,12 @@
-{% extends "recetas/base.html"%}
 
-{% load static %}
-
-{% block herencia %}
+{% block contenidocentral %}
 
 
     <h1>Agregar Entrada</h1>
     
     {% if miFormulario.errors %}
 
-    <p style="color: red;"> Están mal los datos, revisar</p>
+        <p style="color: red;"> Están mal los datos, revisar</p>
 
     {% endif %}
 
@@ -19,7 +16,7 @@
 
         <table>
 
-            {{  miFormulario.as_table }}
+            {{ miFormulario.as_table }}
 
 
         </table>

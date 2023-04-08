@@ -26,28 +26,34 @@ Entradas
 {% endblock %}
 
 {% block contenidocentral %}
+
+    {% if miFormulario %}
+        {% include "recetas/agregarentrada.html" %}
+    {% endif %}
+
+
     
-    <h1>Lista de entradas</h1>
-
-	{% if entradas %}
-
+        <h1>Lista de entradas</h1>
         <ul>
-        {% for e in entradas %}
-            <li>{{e}}</li>
+        {% for m in entradas %}
+            <li>{{m}}</li>
+
+
+            
             <button>
-                <a href="{% url 'eliminarentrada' e.nombre_receta %}">Borrar| </a>
-                <a href="{% url 'editarentrada' e.nombre_receta %}">Actualizar</a>
+                <a href="{% url 'eliminarentrada' m.nombre_receta %}">Borrar | </a>
+                <a href="{% url 'editarentrada' m.nombre_receta %}">Actualizar</a>
             </button>
             <br>
         {% endfor %}
-        </ul>
-        
-    
-	{% endif %}
 
-    <p>
-        <a href="agregarentrada">Agregar</a>
-        
-    </p>
+
+        </ul>
+        <p>
+            <a href="{% url 'agregarentrada' %}">Agregar</a>
+            
+        </p>
+    
+
 
 {% endblock %}

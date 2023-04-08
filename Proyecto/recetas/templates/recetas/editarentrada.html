@@ -1,12 +1,12 @@
-{% extends "recetas/base.html"%}
+
 
 {% load static %}
 
-{% block herencia %}
+{% block contenidocentral %}
 
 
 
-    <h1>Agregar Mascota</h1>
+    <h1>Editar Entrada</h1>
     
     {% if  miFormularioEntrada.errors %}
 
@@ -29,5 +29,6 @@
         <input type="submit", value="Enviar">
 
     </form>
+
 
 {% endblock %}

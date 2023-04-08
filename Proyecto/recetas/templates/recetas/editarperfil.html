@@ -1,12 +1,8 @@
-{% extends "recetas/index.html"%}
-
-{% load static %}
 
 {% block herencia %}
 
 
-    <h1>Editar Perfil</h1>
-    <h1>De {{usuario}}</h1>
+    <h1>Editar perfil de {{usuario}} </h1>
     
     <form action="" method="POST">{% csrf_token %}
 
