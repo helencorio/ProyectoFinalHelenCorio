@@ -7,31 +7,31 @@ from django.contrib.auth.models import User
 
 class EntradaFormulario(forms.Form):   
     nombre_receta= forms.CharField(max_length=30)
-    duracion= forms.IntegerField()
+    duracion= forms.CharField(max_length=20)
     ingredientes= forms.CharField(max_length=60)
     procedimiento= forms.CharField(max_length=500)
     
 class PlatoprincipalFormulario(forms.Form):   
-    nombre= forms.CharField(max_length=30)
-    duracion= forms.IntegerField()
+    nombre_receta= forms.CharField(max_length=30)
+    duracion= forms.CharField(max_length=20)
     ingredientes= forms.CharField(max_length=60)
     procedimiento= forms.CharField(max_length=500)
 
 class PostreFormulario(forms.Form):   
-    nombre= forms.CharField(max_length=30)
-    duracion= forms.IntegerField()
+    nombre_receta= forms.CharField(max_length=30)
+    duracion= forms.CharField(max_length=20)
     ingredientes= forms.CharField(max_length=60)
     procedimiento= forms.CharField(max_length=500)
 
 class VeganoFormulario(forms.Form):   
-    nombre= forms.CharField(max_length=30)
-    duracion= forms.IntegerField()
+    nombre_receta= forms.CharField(max_length=30)
+    duracion= forms.CharField(max_length=20)
     ingredientes= forms.CharField(max_length=60)
     procedimiento= forms.CharField(max_length=500)
 
 class SinglutenFormulario(forms.Form):   
-    nombre= forms.CharField(max_length=30)
-    duracion= forms.IntegerField()
+    nombre_receta= forms.CharField(max_length=30)
+    duracion= forms.CharField(max_length=20)
     ingredientes= forms.CharField(max_length=60)
     procedimiento= forms.CharField(max_length=500)
 

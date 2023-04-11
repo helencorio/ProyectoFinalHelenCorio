@@ -411,6 +411,10 @@ figure.effect-bubba:hover p {
 4.5. Intro Text
 --------------------*/
 
+.imagen-circular {
+    border-radius: 50%;
+}
+
 .intro-section {
 	padding: 60px 0 0 0;
 	margin: 0;
@@ -610,7 +614,7 @@ font-size: 11px;
 
 .btn-xl {
     color: #fff;
-     background-color: #726FB9;
+    background-color: #726FB9;
     border-color: #726FB9;
     font-family: "Robot",sans-serif;
     text-transform: uppercase;
@@ -669,3 +673,5 @@ and (max-width : 480px) {
     font-size: 20px;
 }
 }
+
+

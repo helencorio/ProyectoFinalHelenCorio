@@ -2,6 +2,11 @@
 
 {% load static %}
 
+
+{% block logo %}
+<a class="navbar-brand page-scroll" href="{% url 'index' %}"><img src="{% static 'recetas/images/logo2.png' %}" alt="Treviso theme logo" width="200"></a>
+{% endblock %}
+
 {% block title %}
 Entradas
 {% endblock %}
@@ -15,7 +20,7 @@ Entradas
 		<div class="col-lg-12 text-center">
 			<div class="section-title">
 				<h2>Entradas</h2>
-				<p>Our portfolio is the best way to show our work, you can see here a big range of our work. Check them all and you will find what you are looking for.</p>
+				<p>Deja que tu paladar entre en acción con estas entradas.</p>
 			</div>
 		</div>
 	
@@ -26,34 +31,21 @@ Entradas
 {% endblock %}
 
 {% block contenidocentral %}
-
-    {% if miFormulario %}
-        {% include "recetas/agregarentrada.html" %}
-    {% endif %}
-
-
-    
-        <h1>Lista de entradas</h1>
         <ul>
         {% for m in entradas %}
             <li>{{m}}</li>
-
-
-            
             <button>
-                <a href="{% url 'eliminarentrada' m.nombre_receta %}">Borrar | </a>
+                <a href="{% url 'eliminarentrada' m.nombre_receta %}">Borrar| </a>
                 <a href="{% url 'editarentrada' m.nombre_receta %}">Actualizar</a>
             </button>
             <br>
         {% endfor %}
-
-
         </ul>
         <p>
-            <a href="{% url 'agregarentrada' %}">Agregar</a>
+            <a class="btn btn-primary" href="{% url 'agregarentrada' %}">Agregar</a>
+            <a class="btn btn-primary" href="{% url 'buscarentrada' %}">Buscar entradas</a>
             
         </p>
-    
 
 
 {% endblock %}

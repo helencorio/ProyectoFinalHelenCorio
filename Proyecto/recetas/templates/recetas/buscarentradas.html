@@ -1,0 +1,33 @@
+{% extends 'recetas/base.html' %}
+
+{% block contenidocentral %}
+
+<h1> Formulario para buscar entradas </h1>
+
+<form action="{% url 'buscarentrada' %}" method="GET">
+
+    <input type = "text" name= "nombre_receta" id="entradas" >
+    <input type= "submit" value="Buscar">
+
+
+</form>
+
+<p>Estamos buscando la entrada: {{ nombre_receta }} </p>
+
+{% if entradas %}
+
+<ul>
+{% for e in entradas %}
+    <li> {{e.nombre_receta}} </li>
+    <li> {{e.duracion}} </li>
+    <li> {{e.ingredientes}} </li>
+{% endfor %}
+
+</ul>
+
+{% endif %}
+
+
+<a class="btn btn-primary" href="{% url 'entrada' %}">Atrás</a>
+
+{% endblock %}
